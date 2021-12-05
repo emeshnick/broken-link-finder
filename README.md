@@ -1,5 +1,5 @@
-# CleanOut
+# Cleanup
 
 ## Description
 
-This app uses puppeteer on the backend to help users delete unread emails.
+This app deletes unread emails from gmail account
