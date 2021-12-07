@@ -1,10 +1,10 @@
 const puppeteer = require("puppeteer");
 
-async function main() {
+async function scrape(url) {
   try {
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
-    await page.goto("https://www.gmail.com");
+    await page.goto(url);
     await page.screenshot({ path: "example.png" });
 
     await browser.close();
@@ -13,4 +13,4 @@ async function main() {
   }
 }
 
-main();
+module.exports = { scrape };

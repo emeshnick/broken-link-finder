@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // api routes
-app.use("/api", require("./api"));
+app.use("/api", require("./api/index"));
 
 // static file-serving middleware
 app.use(express.static(path.join(__dirname, "..", "public")));
