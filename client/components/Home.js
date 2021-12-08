@@ -1,6 +1,7 @@
 import React from "react";
 import { Container, InputGroup, FormControl, Button } from "react-bootstrap";
 import { connect } from "react-redux";
+import { runData } from "../store/data";
 
 class Home extends React.Component {
   constructor(props) {
@@ -13,7 +14,6 @@ class Home extends React.Component {
   }
 
   handleChange(evt) {
-    console.log("changed");
     this.setState({
       [evt.target.name]: evt.target.value,
     });
@@ -21,12 +21,11 @@ class Home extends React.Component {
 
   async onInput(evt) {
     evt.preventDefault();
-    console.log("submitted");
-    // try{
-    // await this.props.runData(this.state.inputUrl);
-    // } catch (err){
-    //   throw(err);
-    // }
+    try {
+      await this.props.runData(this.state.inputUrl);
+    } catch (err) {
+      throw err;
+    }
     this.setState({ inputUrl: "" });
   }
 
@@ -64,7 +63,9 @@ const mapState = (state) => {
 };
 
 const mapDispatch = (dispatch) => {
-  return {};
+  return {
+    runData: (url) => dispatch(runData(url)),
+  };
 };
 
 export default connect(mapState, mapDispatch)(Home);
