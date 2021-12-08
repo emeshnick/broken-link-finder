@@ -1,10 +1,33 @@
 import React from "react";
 import { Container, InputGroup, FormControl, Button } from "react-bootstrap";
-import axios from "axios";
+import { connect } from "react-redux";
 
 class Home extends React.Component {
-  async onClick(url) {
-    await axios.post("/api", { url });
+  constructor(props) {
+    super(props);
+    this.state = {
+      inputUrl: "",
+    };
+    this.onInput = this.onInput.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(evt) {
+    console.log("changed");
+    this.setState({
+      [evt.target.name]: evt.target.value,
+    });
+  }
+
+  async onInput(evt) {
+    evt.preventDefault();
+    console.log("submitted");
+    // try{
+    // await this.props.runData(this.state.inputUrl);
+    // } catch (err){
+    //   throw(err);
+    // }
+    this.setState({ inputUrl: "" });
   }
 
   render() {
@@ -14,14 +37,17 @@ class Home extends React.Component {
         <h2>Input URL to find broken links</h2>
         <InputGroup className="mb-3">
           <FormControl
-            placeholder="Recipient's username"
+            name="inputUrl"
+            value={this.state.inputUrl}
+            onChange={this.handleChange}
+            placeholder="Website to clean"
             aria-label="Recipient's username"
             aria-describedby="basic-addon2"
           />
           <Button
+            onClick={this.onInput}
             variant="outline-secondary"
             id="button-addon2"
-            onClick={() => this.onClick("https://www.gmail.com")}
           >
             Go
           </Button>
@@ -31,4 +57,14 @@ class Home extends React.Component {
   }
 }
 
-export default Home;
+const mapState = (state) => {
+  return {
+    data: state.data.data,
+  };
+};
+
+const mapDispatch = (dispatch) => {
+  return {};
+};
+
+export default connect(mapState, mapDispatch)(Home);
