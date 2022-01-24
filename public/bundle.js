@@ -553,7 +553,7 @@ var runData = function runData(url) {
               _context.prev = 0;
               _context.next = 3;
               return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api", {
-                url: "https://github.com/uniwebaccess/Capstone/blob/master/client/src/store/data.js"
+                url: url
               });
 
             case 3:

@@ -14,7 +14,7 @@ export const runData = (url) => {
   return async (dispatch) => {
     try {
       const res = await axios.post("/api", {
-        url: "https://github.com/uniwebaccess/Capstone/blob/master/client/src/store/data.js",
+        url,
       });
       dispatch(ranData(url, res.data));
     } catch (err) {
