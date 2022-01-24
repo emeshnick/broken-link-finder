@@ -219,6 +219,9 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+/*
+ * Homepage component contains all app functionality
+ */
 
 var Home = /*#__PURE__*/function (_React$Component) {
   _inherits(Home, _React$Component);
@@ -237,13 +240,15 @@ var Home = /*#__PURE__*/function (_React$Component) {
     _this.onInput = _this.onInput.bind(_assertThisInitialized(_this));
     _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
     return _this;
-  }
+  } //Changes state as input changes
+
 
   _createClass(Home, [{
     key: "handleChange",
     value: function handleChange(evt) {
       this.setState(_defineProperty({}, evt.target.name, evt.target.value));
-    }
+    } //Function to make request based on input url
+
   }, {
     key: "onInput",
     value: function () {
@@ -267,6 +272,7 @@ var Home = /*#__PURE__*/function (_React$Component) {
                 throw _context.t0;
 
               case 9:
+                //Reset to empty input
                 this.setState({
                   inputUrl: ""
                 });
@@ -434,6 +440,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+/*
+ * Render React App
+ */
+
 react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_redux__WEBPACK_IMPORTED_MODULE_2__["Provider"], {
   store: _store__WEBPACK_IMPORTED_MODULE_4__["default"]
 }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Router"], {
@@ -531,6 +541,10 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+
+/*
+ * Data Reducer, action functions, and thunks for managing app state
+ */
 
 var RUN_DATA = "RUN_DATA";
 

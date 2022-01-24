@@ -1,5 +1,8 @@
 const puppeteer = require("puppeteer");
 
+/*
+ * Webscraper function
+ */
 async function scrape(url) {
   try {
     const browser = await puppeteer.launch();

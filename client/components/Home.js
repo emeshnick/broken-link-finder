@@ -3,6 +3,9 @@ import { Container, InputGroup, FormControl, Button } from "react-bootstrap";
 import { connect } from "react-redux";
 import { runData } from "../store/data";
 
+/*
+ * Homepage component contains all app functionality
+ */
 class Home extends React.Component {
   constructor(props) {
     super(props);
@@ -13,12 +16,14 @@ class Home extends React.Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
+  //Changes state as input changes
   handleChange(evt) {
     this.setState({
       [evt.target.name]: evt.target.value,
     });
   }
 
+  //Function to make request based on input url
   async onInput(evt) {
     evt.preventDefault();
     try {
@@ -26,6 +31,8 @@ class Home extends React.Component {
     } catch (err) {
       throw err;
     }
+
+    //Reset to empty input
     this.setState({ inputUrl: "" });
   }
 

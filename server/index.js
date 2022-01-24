@@ -4,25 +4,25 @@ const morgan = require("morgan");
 const PORT = process.env.PORT || 8080;
 const app = express();
 
-// logging middleware
+// Logging middleware
 app.use(morgan("dev"));
 
-// body parsing middleware
+// Body parsing middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// api routes
+// Path to API routes on router
 app.use("/api", require("./api/index"));
 
-// static file-serving middleware
+// Static file-serving middleware
 app.use(express.static(path.join(__dirname, "..", "public")));
 
-// sends index.html
+// Sends index.html and public files
 app.use("*", (req, res) => {
   res.sendFile(path.join(__dirname, "..", "public/index.html"));
 });
 
-// error handling endware
+// Error handling endware
 app.use((err, req, res) => {
   console.error(err);
   console.error(err.stack);

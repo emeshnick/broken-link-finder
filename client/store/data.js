@@ -1,5 +1,9 @@
 import axios from "axios";
 
+/*
+ * Data Reducer, action functions, and thunks for managing app state
+ */
+
 const RUN_DATA = "RUN_DATA";
 
 const ranData = (url, data) => {
