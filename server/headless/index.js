@@ -9,6 +9,7 @@ async function scrape(url) {
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.setViewport({ width: 1280, height: 1800 });
+
     //Navigate to input url
     await page.goto(url);
 
@@ -17,9 +18,21 @@ async function scrape(url) {
         return { href: a.href, text: a.text };
       })
     );
-    console.log(links);
 
-    await page.screenshot({ path: "example.png" });
+    console.log(links[0]);
+    for (let i = 0; i < 3; i++) {
+      try {
+        if (links[i].href) {
+          await page.goto(`${links[i].href}`, {
+            waitUntil: "load",
+            timeout: 0,
+          });
+          console.log("visited ", links[i].href);
+        }
+      } catch (e) {
+        console.log(e.message);
+      }
+    }
 
     await browser.close();
   } catch (err) {
