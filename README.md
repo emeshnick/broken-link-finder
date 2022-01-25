@@ -20,4 +20,9 @@ To run program:
 npm run start-dev
 ```
 
+## Tech Stack
+
+The main functionality of the app is performed by Puppeteer. Check out the Puppeteer documentation [here](https://pptr.dev/).
+
+This Application is built with React, Redux, HTML, and CSS on the front end with Node and Express on the backend. It uses Webpack to bundle. 
 
