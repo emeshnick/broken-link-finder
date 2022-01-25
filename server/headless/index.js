@@ -12,7 +12,11 @@ async function scrape(url) {
     //Navigate to input url
     await page.goto(url);
 
-    const links = await page.$$eval("a", (el) => el.map((a) => a.href));
+    const links = await page.$$eval("a", (el) =>
+      el.map((a) => {
+        return { href: a.href, text: a.text };
+      })
+    );
     console.log(links);
 
     await page.screenshot({ path: "example.png" });
