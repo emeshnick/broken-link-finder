@@ -5,9 +5,16 @@ const puppeteer = require("puppeteer");
  */
 async function scrape(url) {
   try {
+    //Open headless browser
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
+    await page.setViewport({ width: 1280, height: 1800 });
+    //Navigate to input url
     await page.goto(url);
+
+    const links = await page.$$eval("a", (el) => el.map((a) => a.href));
+    console.log(links);
+
     await page.screenshot({ path: "example.png" });
 
     await browser.close();

@@ -17,6 +17,7 @@ const ranData = (url, data) => {
 export const runData = (url) => {
   return async (dispatch) => {
     try {
+      //Axios request sends input url and dispatches response
       const res = await axios.post("/api", {
         url,
       });
