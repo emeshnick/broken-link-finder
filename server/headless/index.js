@@ -1,9 +1,10 @@
 const puppeteer = require("puppeteer");
 
 /*
- * Webscraper function
+ * Webscraper function using headless browser
  */
 async function scrape(url) {
+  const brokenLinks = [];
   try {
     //Open headless browser
     const browser = await puppeteer.launch();
@@ -19,7 +20,6 @@ async function scrape(url) {
       })
     );
 
-    console.log(links[0]);
     for (let i = 0; i < 3; i++) {
       try {
         if (links[i].href) {
@@ -30,6 +30,8 @@ async function scrape(url) {
           console.log("visited ", links[i].href);
         }
       } catch (e) {
+        //If there is an error visiting the url push link to broken link array
+        brokenLinks.push(links[i]);
         console.log(e.message);
       }
     }
@@ -38,6 +40,8 @@ async function scrape(url) {
   } catch (err) {
     throw (err, "Puppeteer error");
   }
+
+  return brokenLinks;
 }
 
 module.exports = { scrape };
