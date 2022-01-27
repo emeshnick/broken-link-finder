@@ -5,6 +5,8 @@ const puppeteer = require("puppeteer");
  */
 async function scrape(url) {
   const brokenLinks = [];
+  let numLinks = 0;
+
   try {
     //Open headless browser
     const browser = await puppeteer.launch();
@@ -21,6 +23,7 @@ async function scrape(url) {
     );
 
     for (let i = 0; i < 3; i++) {
+      numLinks++;
       try {
         if (links[i].href) {
           await page.goto(`${links[i].href}`, {
@@ -40,7 +43,7 @@ async function scrape(url) {
     throw (err, "Puppeteer error");
   }
 
-  return brokenLinks;
+  return { brokenLinks, numLinks };
 }
 
 module.exports = { scrape };
