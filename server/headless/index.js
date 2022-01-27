@@ -26,7 +26,7 @@ async function scrape(url) {
     );
     await browser.close();
 
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < links.length && i < 50; i++) {
       numLinks++;
       try {
         if (links[i].href) {

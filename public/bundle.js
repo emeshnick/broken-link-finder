@@ -236,7 +236,8 @@ var Home = /*#__PURE__*/function (_React$Component) {
     _this = _super.call(this, props);
     _this.state = {
       inputUrl: "",
-      loading: false
+      loading: false,
+      error: false
     };
     _this.onInput = _this.onInput.bind(_assertThisInitialized(_this));
     _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
@@ -260,42 +261,42 @@ var Home = /*#__PURE__*/function (_React$Component) {
               case 0:
                 evt.preventDefault();
                 this.setState({
-                  loading: true
+                  loading: true,
+                  error: false
                 });
-                console.log("loading");
-                _context.prev = 3;
-                _context.next = 6;
+                _context.prev = 2;
+                _context.next = 5;
                 return this.props.runData(this.state.inputUrl);
 
-              case 6:
+              case 5:
                 this.setState({
                   loading: false
                 });
-                console.log("loaded!");
-                _context.next = 15;
+                _context.next = 12;
                 break;
 
-              case 10:
-                _context.prev = 10;
-                _context.t0 = _context["catch"](3);
+              case 8:
+                _context.prev = 8;
+                _context.t0 = _context["catch"](2);
                 this.setState({
-                  loading: false
+                  loading: false,
+                  error: true,
+                  inputUrl: ""
                 });
-                console.log("loaded!");
                 throw _context.t0;
 
-              case 15:
+              case 12:
                 //Reset to empty input
                 this.setState({
                   inputUrl: ""
                 });
 
-              case 16:
+              case 13:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, this, [[3, 10]]);
+        }, _callee, this, [[2, 8]]);
       }));
 
       function onInput(_x) {
@@ -324,7 +325,9 @@ var Home = /*#__PURE__*/function (_React$Component) {
         variant: "warning"
       }, "Loading... This might take a while..."), this.props.numLinks && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Container"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Alert"], {
         variant: "warning"
-      }, "Checked ", "".concat(this.props.numLinks), " links. There were", " ", "".concat(this.props.brokenLinks.length), " broken links.")));
+      }, "Checked ", "".concat(this.props.numLinks), " links. There were", " ", "".concat(this.props.brokenLinks.length), " broken links.")), this.state.error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Alert"], {
+        variant: "danger"
+      }, " There was an error scanning the url."));
     }
   }]);
 

@@ -18,6 +18,7 @@ class Home extends React.Component {
     this.state = {
       inputUrl: "",
       loading: false,
+      error: false,
     };
     this.onInput = this.onInput.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -33,15 +34,12 @@ class Home extends React.Component {
   //Function to make request based on input url
   async onInput(evt) {
     evt.preventDefault();
-    this.setState({ loading: true });
-    console.log("loading");
+    this.setState({ loading: true, error: false });
     try {
       await this.props.runData(this.state.inputUrl);
       this.setState({ loading: false });
-      console.log("loaded!");
     } catch (err) {
-      this.setState({ loading: false });
-      console.log("loaded!");
+      this.setState({ loading: false, error: true, inputUrl: "" });
       throw err;
     }
 
@@ -82,6 +80,9 @@ class Home extends React.Component {
               {`${this.props.brokenLinks.length}`} broken links.
             </Alert>
           </Container>
+        )}
+        {this.state.error && (
+          <Alert variant="danger"> There was an error scanning the url.</Alert>
         )}
       </Container>
     );
