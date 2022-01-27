@@ -2,6 +2,8 @@ const puppeteer = require("puppeteer");
 
 /*
  * Webscraper function using headless browser
+ * Scrapes website and then visits all of the links scraped
+ * Returns the number of links visited and an array of the broken links
  */
 async function scrape(url) {
   const brokenLinks = [];

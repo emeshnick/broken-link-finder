@@ -58,6 +58,12 @@ class Home extends React.Component {
             Go
           </Button>
         </InputGroup>
+        {this.props.numLinks && (
+          <Container>
+            Checked {`${this.props.numLinks}`} links. There were{" "}
+            {`${this.props.brokenLinks.length}`} broken links.
+          </Container>
+        )}
       </Container>
     );
   }

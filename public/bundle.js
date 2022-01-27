@@ -307,7 +307,7 @@ var Home = /*#__PURE__*/function (_React$Component) {
         onClick: this.onInput,
         variant: "outline-secondary",
         id: "button-addon2"
-      }, "Go")));
+      }, "Go")), this.props.numLinks && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Container"], null, "Checked ", "".concat(this.props.numLinks), " links. There were", " ", "".concat(this.props.brokenLinks.length), " broken links."));
     }
   }]);
 
