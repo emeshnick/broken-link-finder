@@ -5,6 +5,7 @@ import axios from "axios";
  */
 
 const RUN_DATA = "RUN_DATA";
+const CLEAR_DATA = "CLEAR_DATA";
 
 const ranData = (url, brokenLinks, numLinks) => {
   return {
@@ -12,6 +13,12 @@ const ranData = (url, brokenLinks, numLinks) => {
     url,
     brokenLinks,
     numLinks,
+  };
+};
+
+const clearedData = () => {
+  return {
+    type: CLEAR_DATA,
   };
 };
 
@@ -29,6 +36,12 @@ export const runData = (url) => {
   };
 };
 
+export const clearData = () => {
+  return async (dispatch) => {
+    dispatch(clearedData);
+  };
+};
+
 export default function (state = {}, action) {
   switch (action.type) {
     case RUN_DATA:
@@ -37,6 +50,8 @@ export default function (state = {}, action) {
         numLinks: action.numLinks,
         url: action.url,
       };
+    case CLEAR_DATA:
+      return {};
     default:
       return state;
   }

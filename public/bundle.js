@@ -556,12 +556,13 @@ var Routes = /*#__PURE__*/function (_React$Component) {
 /*!******************************!*\
   !*** ./client/store/data.js ***!
   \******************************/
-/*! exports provided: runData, default */
+/*! exports provided: runData, clearData, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "runData", function() { return runData; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "clearData", function() { return clearData; });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -574,6 +575,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
  */
 
 var RUN_DATA = "RUN_DATA";
+var CLEAR_DATA = "CLEAR_DATA";
 
 var ranData = function ranData(url, brokenLinks, numLinks) {
   return {
@@ -581,6 +583,12 @@ var ranData = function ranData(url, brokenLinks, numLinks) {
     url: url,
     brokenLinks: brokenLinks,
     numLinks: numLinks
+  };
+};
+
+var clearedData = function clearedData() {
+  return {
+    type: CLEAR_DATA
   };
 };
 
@@ -622,6 +630,28 @@ var runData = function runData(url) {
     };
   }();
 };
+var clearData = function clearData() {
+  return /*#__PURE__*/function () {
+    var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(dispatch) {
+      return regeneratorRuntime.wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              dispatch(clearedData);
+
+            case 1:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2);
+    }));
+
+    return function (_x2) {
+      return _ref2.apply(this, arguments);
+    };
+  }();
+};
 /* harmony default export */ __webpack_exports__["default"] = (function () {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var action = arguments.length > 1 ? arguments[1] : undefined;
@@ -633,6 +663,9 @@ var runData = function runData(url) {
         numLinks: action.numLinks,
         url: action.url
       };
+
+    case CLEAR_DATA:
+      return {};
 
     default:
       return state;
