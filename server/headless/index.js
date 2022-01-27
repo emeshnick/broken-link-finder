@@ -1,4 +1,5 @@
 const puppeteer = require("puppeteer");
+const axios = require("axios");
 
 /*
  * Webscraper function using headless browser
@@ -23,15 +24,13 @@ async function scrape(url) {
         return { href: a.href, text: a.text };
       })
     );
+    await browser.close();
 
     for (let i = 0; i < 3; i++) {
       numLinks++;
       try {
         if (links[i].href) {
-          await page.goto(`${links[i].href}`, {
-            waitUntil: "load",
-            timeout: 0,
-          });
+          await axios.get(`${links[i].href}`);
           console.log("visited ", links[i].href);
         }
       } catch (e) {
@@ -39,8 +38,6 @@ async function scrape(url) {
         brokenLinks.push({ ...links[i], message: e.message });
       }
     }
-
-    await browser.close();
   } catch (err) {
     throw (err, "Puppeteer error");
   }
