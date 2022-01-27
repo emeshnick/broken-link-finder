@@ -260,24 +260,27 @@ var Home = /*#__PURE__*/function (_React$Component) {
             switch (_context.prev = _context.next) {
               case 0:
                 evt.preventDefault();
+                this.props.clearData(); //Set loading and error state
+
                 this.setState({
                   loading: true,
                   error: false
-                });
-                _context.prev = 2;
-                _context.next = 5;
+                }); //Run data through scraper
+
+                _context.prev = 3;
+                _context.next = 6;
                 return this.props.runData(this.state.inputUrl);
 
-              case 5:
+              case 6:
                 this.setState({
                   loading: false
                 });
-                _context.next = 12;
+                _context.next = 13;
                 break;
 
-              case 8:
-                _context.prev = 8;
-                _context.t0 = _context["catch"](2);
+              case 9:
+                _context.prev = 9;
+                _context.t0 = _context["catch"](3);
                 this.setState({
                   loading: false,
                   error: true,
@@ -285,18 +288,18 @@ var Home = /*#__PURE__*/function (_React$Component) {
                 });
                 throw _context.t0;
 
-              case 12:
+              case 13:
                 //Reset to empty input
                 this.setState({
                   inputUrl: ""
                 });
 
-              case 13:
+              case 14:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, this, [[2, 8]]);
+        }, _callee, this, [[3, 9]]);
       }));
 
       function onInput(_x) {
@@ -351,6 +354,9 @@ var mapDispatch = function mapDispatch(dispatch) {
   return {
     runData: function runData(url) {
       return dispatch(Object(_store_data__WEBPACK_IMPORTED_MODULE_3__["runData"])(url));
+    },
+    clearData: function clearData() {
+      return dispatch(Object(_store_data__WEBPACK_IMPORTED_MODULE_3__["clearData"])());
     }
   };
 };
@@ -637,7 +643,7 @@ var clearData = function clearData() {
         while (1) {
           switch (_context2.prev = _context2.next) {
             case 0:
-              dispatch(clearedData);
+              dispatch(clearedData());
 
             case 1:
             case "end":

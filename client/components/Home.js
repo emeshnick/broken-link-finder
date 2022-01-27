@@ -9,7 +9,7 @@ import {
   ListGroupItem,
 } from "react-bootstrap";
 import { connect } from "react-redux";
-import { runData } from "../store/data";
+import { runData, clearData } from "../store/data";
 
 /*
  * Homepage component contains all app functionality
@@ -36,7 +36,12 @@ class Home extends React.Component {
   //Function to make request based on input url
   async onInput(evt) {
     evt.preventDefault();
+    this.props.clearData();
+
+    //Set loading and error state
     this.setState({ loading: true, error: false });
+
+    //Run data through scraper
     try {
       await this.props.runData(this.state.inputUrl);
       this.setState({ loading: false });
@@ -119,6 +124,7 @@ const mapState = (state) => {
 const mapDispatch = (dispatch) => {
   return {
     runData: (url) => dispatch(runData(url)),
+    clearData: () => dispatch(clearData()),
   };
 };
 

@@ -38,7 +38,7 @@ export const runData = (url) => {
 
 export const clearData = () => {
   return async (dispatch) => {
-    dispatch(clearedData);
+    dispatch(clearedData());
   };
 };
 
