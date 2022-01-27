@@ -65,7 +65,7 @@ class Home extends React.Component {
 
 const mapState = (state) => {
   return {
-    data: state.data.data,
+    data: state.data,
   };
 };
 

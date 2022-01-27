@@ -316,7 +316,7 @@ var Home = /*#__PURE__*/function (_React$Component) {
 
 var mapState = function mapState(state) {
   return {
-    data: state.data.data
+    data: state.data
   };
 };
 
@@ -548,11 +548,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 var RUN_DATA = "RUN_DATA";
 
-var ranData = function ranData(url, data) {
+var ranData = function ranData(url, brokenLinks, numLinks) {
   return {
     type: RUN_DATA,
     url: url,
-    data: data
+    brokenLinks: brokenLinks,
+    numLinks: numLinks
   };
 };
 
@@ -572,7 +573,7 @@ var runData = function runData(url) {
 
             case 3:
               res = _context.sent;
-              dispatch(ranData(url, res.data));
+              dispatch(ranData(url, res.data.brokenLinks, res.data.numLinks));
               _context.next = 10;
               break;
 
@@ -595,12 +596,16 @@ var runData = function runData(url) {
   }();
 };
 /* harmony default export */ __webpack_exports__["default"] = (function () {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var action = arguments.length > 1 ? arguments[1] : undefined;
 
   switch (action.type) {
     case RUN_DATA:
-      return action.data;
+      return {
+        brokenLinks: action.brokenLinks,
+        numLinks: action.numLinks,
+        url: action.url
+      };
 
     default:
       return state;

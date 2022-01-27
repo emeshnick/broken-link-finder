@@ -31,8 +31,7 @@ async function scrape(url) {
         }
       } catch (e) {
         //If there is an error visiting the url push link to broken link array
-        brokenLinks.push(links[i]);
-        console.log(e.message);
+        brokenLinks.push({ ...links[i], message: e.message });
       }
     }
 

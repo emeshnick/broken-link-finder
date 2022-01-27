@@ -6,11 +6,12 @@ import axios from "axios";
 
 const RUN_DATA = "RUN_DATA";
 
-const ranData = (url, data) => {
+const ranData = (url, brokenLinks, numLinks) => {
   return {
     type: RUN_DATA,
     url,
-    data,
+    brokenLinks,
+    numLinks,
   };
 };
 
@@ -21,17 +22,21 @@ export const runData = (url) => {
       const res = await axios.post("/api", {
         url,
       });
-      dispatch(ranData(url, res.data));
+      dispatch(ranData(url, res.data.brokenLinks, res.data.numLinks));
     } catch (err) {
       throw err;
     }
   };
 };
 
-export default function (state = [], action) {
+export default function (state = {}, action) {
   switch (action.type) {
     case RUN_DATA:
-      return action.data;
+      return {
+        brokenLinks: action.brokenLinks,
+        numLinks: action.numLinks,
+        url: action.url,
+      };
     default:
       return state;
   }
