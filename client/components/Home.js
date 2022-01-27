@@ -5,6 +5,8 @@ import {
   FormControl,
   Button,
   Alert,
+  ListGroup,
+  ListGroupItem,
 } from "react-bootstrap";
 import { connect } from "react-redux";
 import { runData } from "../store/data";
@@ -52,6 +54,7 @@ class Home extends React.Component {
       <Container>
         <h1>Cleanout</h1>
         <h2>Input URL to find broken links</h2>
+
         {!this.state.loading ? (
           <InputGroup className="mb-3">
             <FormControl
@@ -73,14 +76,31 @@ class Home extends React.Component {
         ) : (
           <Alert variant="warning">Loading... This might take a while...</Alert>
         )}
+
         {this.props.numLinks && (
           <Container>
             <Alert variant="warning">
               Checked {`${this.props.numLinks}`} links. There were{" "}
               {`${this.props.brokenLinks.length}`} broken links.
             </Alert>
+            {this.props.brokenLinks.length && (
+              <ListGroup>
+                <ListGroupItem>
+                  <div className="fw-bold">Broken Links</div>
+                </ListGroupItem>
+                {this.props.brokenLinks.map((link, idx) => {
+                  return (
+                    <ListGroup.Item key={link.href + `${idx}`}>
+                      {link.href}
+                      {link.text && ` as "${link.text}"`}
+                    </ListGroup.Item>
+                  );
+                })}
+              </ListGroup>
+            )}
           </Container>
         )}
+
         {this.state.error && (
           <Alert variant="danger"> There was an error scanning the url.</Alert>
         )}

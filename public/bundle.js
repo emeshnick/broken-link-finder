@@ -325,7 +325,13 @@ var Home = /*#__PURE__*/function (_React$Component) {
         variant: "warning"
       }, "Loading... This might take a while..."), this.props.numLinks && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Container"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Alert"], {
         variant: "warning"
-      }, "Checked ", "".concat(this.props.numLinks), " links. There were", " ", "".concat(this.props.brokenLinks.length), " broken links.")), this.state.error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Alert"], {
+      }, "Checked ", "".concat(this.props.numLinks), " links. There were", " ", "".concat(this.props.brokenLinks.length), " broken links."), this.props.brokenLinks.length && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["ListGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["ListGroupItem"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "fw-bold"
+      }, "Broken Links")), this.props.brokenLinks.map(function (link, idx) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["ListGroup"].Item, {
+          key: link.href + "".concat(idx)
+        }, link.href, link.text && " as \"".concat(link.text, "\""));
+      }))), this.state.error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Alert"], {
         variant: "danger"
       }, " There was an error scanning the url."));
     }
