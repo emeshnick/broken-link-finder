@@ -316,7 +316,8 @@ var Home = /*#__PURE__*/function (_React$Component) {
 
 var mapState = function mapState(state) {
   return {
-    data: state.data
+    brokenLinks: state.data.brokenLinks,
+    numLinks: state.data.numLinks
   };
 };
 
