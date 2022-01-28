@@ -7,9 +7,21 @@ import {
   Alert,
   ListGroup,
   ListGroupItem,
+  Image,
 } from "react-bootstrap";
 import { connect } from "react-redux";
 import { runData, clearData } from "../store/data";
+
+const styles = {
+  mainContainer: {
+    padding: "10%",
+  },
+  image: {
+    width: "30%",
+    left: "50%",
+    paddingBottom: "5%",
+  },
+};
 
 /*
  * Homepage component contains all app functionality
@@ -56,10 +68,17 @@ class Home extends React.Component {
 
   render() {
     return (
-      <Container>
-        <h1>Cleanout</h1>
-        <h2>Input URL to find broken links</h2>
-
+      <Container style={styles.mainContainer}>
+        <Container className="d-flex justify-content-center">
+          <Image
+            roundedCircle
+            fluid
+            style={styles.image}
+            src={"computer.jpeg"}
+            alt="8 bit illustration of a computer with a heart on the screen"
+          />
+        </Container>
+        <h1>Input URL to find broken links</h1>
         {!this.state.loading ? (
           <InputGroup className="mb-3">
             <FormControl
@@ -88,7 +107,7 @@ class Home extends React.Component {
               Checked {`${this.props.numLinks}`} links. There were{" "}
               {`${this.props.brokenLinks.length}`} broken links.
             </Alert>
-            {this.props.brokenLinks.length && (
+            {this.props.brokenLinks.length > 0 && (
               <ListGroup>
                 <ListGroupItem>
                   <div className="fw-bold">Broken Links</div>
