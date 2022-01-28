@@ -48,5 +48,8 @@
     "babel-loader": "^8.0.5",
     "webpack": "^4.16.4",
     "webpack-cli": "^3.1.0"
+  },
+  "engines": {
+    "node": "12.x"
   }
 }
