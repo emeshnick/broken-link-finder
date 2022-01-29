@@ -6,7 +6,13 @@ import data from "./data.js";
 
 const reducer = combineReducers({ data });
 const middleware = composeWithDevTools(
-  applyMiddleware(thunkMiddleware, createLogger({ collapsed: true }))
+  applyMiddleware(
+    thunkMiddleware,
+    createLogger({
+      collapsed: true,
+      predicate: () => process.env.NODE_ENV === "development",
+    })
+  )
 );
 const store = createStore(reducer, middleware);
 
