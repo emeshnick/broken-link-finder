@@ -11,12 +11,12 @@ const middleware = composeWithDevTools(
     createLogger({
       collapsed: true,
       predicate: () => {
-        return process.env.NODE_ENV === "development";
+        // return true
+        return false;
       },
     })
   )
 );
-
 const store = createStore(reducer, middleware);
 
 export default store;
