@@ -8,6 +8,7 @@ import {
   ListGroup,
   ListGroupItem,
   Image,
+  Spinner,
 } from "react-bootstrap";
 import { connect } from "react-redux";
 import { runData, clearData } from "../store/data";
@@ -20,6 +21,10 @@ const styles = {
     width: "30%",
     left: "50%",
     paddingBottom: "5%",
+  },
+  spinner: {
+    width: "2.5rem",
+    height: "2.5rem",
   },
 };
 
@@ -98,7 +103,10 @@ class Home extends React.Component {
             </Button>
           </InputGroup>
         ) : (
-          <Alert variant="warning">Loading... This might take a while...</Alert>
+          <Container className="d-flex justify-content-center">
+            <p>Scanning...</p>
+            <Spinner style={styles.spinner} animation="border" role="status" />
+          </Container>
         )}
 
         {this.props.numLinks && (

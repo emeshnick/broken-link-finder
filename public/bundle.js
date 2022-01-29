@@ -236,6 +236,10 @@ var styles = {
     width: "30%",
     left: "50%",
     paddingBottom: "5%"
+  },
+  spinner: {
+    width: "2.5rem",
+    height: "2.5rem"
   }
 };
 /*
@@ -353,9 +357,13 @@ var Home = /*#__PURE__*/function (_React$Component) {
         onClick: this.onInput,
         variant: "outline-secondary",
         id: "button-addon2"
-      }, "Go")) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Alert"], {
-        variant: "warning"
-      }, "Loading... This might take a while..."), this.props.numLinks && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Container"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Alert"], {
+      }, "Go")) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Container"], {
+        className: "d-flex justify-content-center"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Scanning..."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Spinner"], {
+        style: styles.spinner,
+        animation: "border",
+        role: "status"
+      })), this.props.numLinks && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Container"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Alert"], {
         variant: "warning"
       }, "Checked ", "".concat(this.props.numLinks), " links. There were", " ", "".concat(this.props.brokenLinks.length), " broken links."), this.props.brokenLinks.length > 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["ListGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["ListGroupItem"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "fw-bold"
