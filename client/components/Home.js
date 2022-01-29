@@ -15,12 +15,12 @@ import { runData, clearData } from "../store/data";
 
 const styles = {
   mainContainer: {
-    padding: "10%",
+    padding: "5rem",
   },
   image: {
-    width: "30%",
+    width: "10rem",
     left: "50%",
-    paddingBottom: "5%",
+    paddingBottom: "2.5rem",
   },
   spinner: {
     width: "2.5rem",

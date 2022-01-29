@@ -178,7 +178,7 @@ var About = /*#__PURE__*/function (_React$Component) {
         style: styles.mainContainer
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
         style: styles.header
-      }, "About This App"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "This app uses basic webscraping to scan through the links on any given page. If the server finds an error in trying to reach one of the scanned links, it is added to the list of broken links. Broken links are displayed by the URL and the text that it is connected to.", " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "You can find the repository for this project on", " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      }, "About This App"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "This app uses webscraping to scan through the links on any given page. If the server finds an error in trying to reach one of the scanned links, it's added to the list of broken links. Broken links are displayed by the URL and the text it's attached to. ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "You can find the repository for this project on", " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: "https://github.com/emeshnick/broken-link-finder"
       }, "Github"), "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         style: styles.signature
@@ -241,12 +241,12 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 var styles = {
   mainContainer: {
-    padding: "10%"
+    padding: "5rem"
   },
   image: {
-    width: "30%",
+    width: "10rem",
     left: "50%",
-    paddingBottom: "5%"
+    paddingBottom: "2.5rem"
   },
   spinner: {
     width: "2.5rem",
