@@ -134,8 +134,9 @@ class Home extends React.Component {
           <Container>
             <Alert variant="warning">
               Checked {`${this.props.numLinks}`} links. There{" "}
-              {numLinks === 1 ? "was " : "were "}
-              {`${this.props.brokenLinks.length}`} broken links.
+              {this.props.brokenLinks.length === 1 ? "was " : "were "}
+              {`${this.props.brokenLinks.length}`} broken{" "}
+              {this.props.brokenLinks.length === 1 ? "link" : "links"}.
             </Alert>
             {this.props.brokenLinks.length > 0 && (
               <ListGroup>
