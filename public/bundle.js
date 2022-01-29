@@ -240,6 +240,13 @@ var styles = {
   spinner: {
     width: "2.5rem",
     height: "2.5rem"
+  },
+  heading: {
+    paddingBottom: "0.5rem"
+  },
+  text: {
+    whiteSpace: "pre-wrap",
+    overflowWrap: "break-word"
   }
 };
 /*
@@ -344,13 +351,17 @@ var Home = /*#__PURE__*/function (_React$Component) {
         style: styles.image,
         src: "computer.jpeg",
         alt: "8 bit illustration of a computer with a heart on the screen"
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Input URL to find broken links"), !this.state.loading ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroup"], {
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "text-center"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+        style: styles.heading
+      }, "Scan Any Website for", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Broken Links")), !this.state.loading ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroup"], {
         className: "mb-3"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["FormControl"], {
         name: "inputUrl",
         value: this.state.inputUrl,
         onChange: this.handleChange,
-        placeholder: "Website to clean",
+        placeholder: "Enter URL",
         "aria-label": "Recipient's username",
         "aria-describedby": "basic-addon2"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
@@ -358,18 +369,26 @@ var Home = /*#__PURE__*/function (_React$Component) {
         variant: "outline-secondary",
         id: "button-addon2"
       }, "Go")) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Container"], {
-        className: "d-flex justify-content-center"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Scanning..."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Spinner"], {
+        fluid: true
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        className: "text-center",
+        style: styles.heading
+      }, "Scanning..."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "text-center"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Spinner"], {
         style: styles.spinner,
         animation: "border",
-        role: "status"
-      })), this.props.numLinks && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Container"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Alert"], {
+        role: "status",
+        variant: "warning"
+      }))), this.props.numLinks && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Container"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Alert"], {
         variant: "warning"
       }, "Checked ", "".concat(this.props.numLinks), " links. There were", " ", "".concat(this.props.brokenLinks.length), " broken links."), this.props.brokenLinks.length > 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["ListGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["ListGroupItem"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "fw-bold"
-      }, "Broken Links")), this.props.brokenLinks.map(function (link, idx) {
+        className: "fw-bold",
+        style: styles.text
+      }, "Broke Links on ", this.props.url)), this.props.brokenLinks.map(function (link, idx) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["ListGroup"].Item, {
-          key: link.href + "".concat(idx)
+          key: link.href + "".concat(idx),
+          style: styles.text
         }, link.href, link.text && " as \"".concat(link.text, "\""));
       }))), this.state.error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Alert"], {
         variant: "danger"
@@ -383,7 +402,8 @@ var Home = /*#__PURE__*/function (_React$Component) {
 var mapState = function mapState(state) {
   return {
     brokenLinks: state.data.brokenLinks,
-    numLinks: state.data.numLinks
+    numLinks: state.data.numLinks,
+    url: state.data.url
   };
 };
 

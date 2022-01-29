@@ -26,6 +26,13 @@ const styles = {
     width: "2.5rem",
     height: "2.5rem",
   },
+  heading: {
+    paddingBottom: "0.5rem",
+  },
+  text: {
+    whiteSpace: "pre-wrap",
+    overflowWrap: "break-word",
+  },
 };
 
 /*
@@ -83,14 +90,18 @@ class Home extends React.Component {
             alt="8 bit illustration of a computer with a heart on the screen"
           />
         </Container>
-        <h1>Input URL to find broken links</h1>
+        <div className="text-center">
+          <h1 style={styles.heading}>
+            Scan Any Website for<br></br>Broken Links
+          </h1>
+        </div>
         {!this.state.loading ? (
           <InputGroup className="mb-3">
             <FormControl
               name="inputUrl"
               value={this.state.inputUrl}
               onChange={this.handleChange}
-              placeholder="Website to clean"
+              placeholder="Enter URL"
               aria-label="Recipient's username"
               aria-describedby="basic-addon2"
             />
@@ -103,9 +114,19 @@ class Home extends React.Component {
             </Button>
           </InputGroup>
         ) : (
-          <Container className="d-flex justify-content-center">
-            <p>Scanning...</p>
-            <Spinner style={styles.spinner} animation="border" role="status" />
+          <Container fluid>
+            <h2 className="text-center" style={styles.heading}>
+              Scanning...
+            </h2>
+
+            <div className="text-center">
+              <Spinner
+                style={styles.spinner}
+                animation="border"
+                role="status"
+                variant="warning"
+              />
+            </div>
           </Container>
         )}
 
@@ -118,11 +139,16 @@ class Home extends React.Component {
             {this.props.brokenLinks.length > 0 && (
               <ListGroup>
                 <ListGroupItem>
-                  <div className="fw-bold">Broken Links</div>
+                  <div className="fw-bold" style={styles.text}>
+                    Broke Links on {this.props.url}
+                  </div>
                 </ListGroupItem>
                 {this.props.brokenLinks.map((link, idx) => {
                   return (
-                    <ListGroup.Item key={link.href + `${idx}`}>
+                    <ListGroup.Item
+                      key={link.href + `${idx}`}
+                      style={styles.text}
+                    >
                       {link.href}
                       {link.text && ` as "${link.text}"`}
                     </ListGroup.Item>
@@ -145,6 +171,7 @@ const mapState = (state) => {
   return {
     brokenLinks: state.data.brokenLinks,
     numLinks: state.data.numLinks,
+    url: state.data.url,
   };
 };
 
