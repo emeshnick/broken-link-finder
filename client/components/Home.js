@@ -133,14 +133,15 @@ class Home extends React.Component {
         {this.props.numLinks && (
           <Container>
             <Alert variant="warning">
-              Checked {`${this.props.numLinks}`} links. There were{" "}
+              Checked {`${this.props.numLinks}`} links. There{" "}
+              {numLinks === 1 ? "was " : "were "}
               {`${this.props.brokenLinks.length}`} broken links.
             </Alert>
             {this.props.brokenLinks.length > 0 && (
               <ListGroup>
                 <ListGroupItem>
                   <div className="fw-bold" style={styles.text}>
-                    Broke Links on {this.props.url}
+                    Broken Links on {this.props.url}
                   </div>
                 </ListGroupItem>
                 {this.props.brokenLinks.map((link, idx) => {
