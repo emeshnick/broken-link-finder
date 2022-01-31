@@ -11,7 +11,6 @@ const middleware = composeWithDevTools(
     createLogger({
       collapsed: true,
       predicate: () => {
-        // return true
         return false;
       },
     })
