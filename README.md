@@ -4,7 +4,7 @@
 
 This is a Web Application to scan a website to see if its links are working. The user can input a url, and the application scrapes the site to check for broken links.
 
-This can be a testing tool for developers, but is easy to use so that anyone can check a website. 
+This can be a testing tool for developers, but the deployed site means that anyone can use it for their personal or organization website. Check it out [here](http://broken-link-e.herokuapp.com/).
 
 ## Setup 
 
