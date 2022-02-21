@@ -1,6 +1,7 @@
 import React from "react";
 import {
   Container,
+  Form,
   InputGroup,
   FormControl,
   Button,
@@ -96,23 +97,25 @@ class Home extends React.Component {
           </h1>
         </div>
         {!this.state.loading ? (
-          <InputGroup className="mb-3">
-            <FormControl
-              name="inputUrl"
-              value={this.state.inputUrl}
-              onChange={this.handleChange}
-              placeholder="Enter URL"
-              aria-label="Recipient's username"
-              aria-describedby="basic-addon2"
-            />
-            <Button
-              onClick={this.onInput}
-              variant="outline-secondary"
-              id="button-addon2"
-            >
-              Go
-            </Button>
-          </InputGroup>
+          <Form onSubmit={this.onInput}>
+            <InputGroup className="mb-3">
+              <FormControl
+                name="inputUrl"
+                value={this.state.inputUrl}
+                onChange={this.handleChange}
+                placeholder="Enter URL"
+                aria-label="Recipient's username"
+                aria-describedby="basic-addon2"
+              />
+              <Button
+                type="submit"
+                variant="outline-secondary"
+                id="button-addon2"
+              >
+                Go
+              </Button>
+            </InputGroup>
+          </Form>
         ) : (
           <Container fluid>
             <h2 className="text-center" style={styles.heading}>
