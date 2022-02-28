@@ -374,7 +374,7 @@ var Home = /*#__PURE__*/function (_React$Component) {
         name: "inputUrl",
         value: this.state.inputUrl,
         onChange: this.handleChange,
-        placeholder: "Enter URL",
+        placeholder: "https://",
         "aria-label": "Recipient's username",
         "aria-describedby": "basic-addon2"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {

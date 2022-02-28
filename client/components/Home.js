@@ -103,7 +103,7 @@ class Home extends React.Component {
                 name="inputUrl"
                 value={this.state.inputUrl}
                 onChange={this.handleChange}
-                placeholder="Enter URL"
+                placeholder="https://"
                 aria-label="Recipient's username"
                 aria-describedby="basic-addon2"
               />
