@@ -10,9 +10,7 @@ const middleware = composeWithDevTools(
     thunkMiddleware,
     createLogger({
       collapsed: true,
-      predicate: () => {
-        return false;
-      },
+      predicate: () => process.env.NODE_ENV !== "production",
     })
   )
 );
